@@ -9,6 +9,8 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['title','body'];
+
    public function getDisplayBodyAttribute(){
        return nl2br($this->body);
    }

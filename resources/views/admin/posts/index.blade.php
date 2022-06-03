@@ -22,7 +22,7 @@
                 <td>{{$post->updated_at}}</td>
                 <td>
                     <a class="btn btn-primary" href="">View</a>
-                    <a class="btn btn-warning" href="">Edit</a>
+                    <a class="btn btn-warning" href="{{route('admin.posts.edit', ['post' => $post])}}">Edit</a>
                     <a class="btn btn-danger" href="">Delete</a>
                 </td>
             </tr>

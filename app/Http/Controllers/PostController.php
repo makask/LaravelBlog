@@ -33,11 +33,13 @@ class PostController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StorePostRequest  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StorePostRequest $request)
     {
-        dd($request->input());
+        $post = new Post($request->validated());
+        $post->save();
+        return response()->redirectToRoute('admin.posts.index');
     }
 
     /**
@@ -59,7 +61,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('admin.posts.edit',compact('post'));
     }
 
     /**
@@ -71,7 +73,9 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        //
+        $post->fill($request->validated());
+        $post -> save();
+        return response()->redirectToRoute('admin.posts.index');
     }
 
     /**
