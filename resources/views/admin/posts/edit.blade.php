@@ -23,6 +23,9 @@
             <label for="body" class="form-label">Content</label>
             <textarea class="form-control" id="body" rows="12" name="body" placeholder="Write something cool...">{{ old('body') ?? $post->body }}</textarea>
         </div>
-        <input type="submit" class="btn btn-primary" value="Create">
+        <input type="submit" class="btn btn-primary" value="Save">
+        @unless($post->published_at)
+            <input type="submit" class="btn btn-primary" value="Publish" formaction="{{route('admin.posts.update', ['post' => $post])}}">
+        @endif
     </form>
 @endsection

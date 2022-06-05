@@ -11,7 +11,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $post->title }}</h5>
                         <p class="card-text">{{ $post->snippet }}</p>
-                        <p class="text-muted" data-bs-toggle="tooltip" title="{{$post->created_at}}">{{ $post->created_at->diffForHumans() }}</p>
+                        <p class="text-muted" data-bs-toggle="tooltip" title="{{$post->published_at}}">{{ $post->published_at->diffForHumans() }}</p>
                         <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
