@@ -34,6 +34,10 @@ class Post extends Model
 
     protected $dates = ['published_at'];
 
+    public function images(){
+        return $this->hasMany(Image::class);
+    }
+
     public static function published(){
         return self::whereNotNull('published_at');
     }

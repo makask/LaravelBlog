@@ -7,7 +7,11 @@
         @foreach($posts as $post)
             <div class="col">
                 <div class="card">
-{{--                    <img src="..." class="card-img-top" alt="...">--}}
+                    @if($post->images->count() == 1)
+                            <img src="{{$post->images[0]->path}}" class="card-img-top" alt="...">
+                    @elseif($post->images->count() > 1)
+                        @include('partials.carousel', ['id' => $post->id, 'images' => $post->images])
+                    @endif
                     <div class="card-body">
                         <h5 class="card-title">{{ $post->title }}</h5>
                         <p class="card-text">{{ $post->snippet }}</p>
