@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * App\Models\Post
@@ -52,5 +53,13 @@ class Post extends Model
 
     public function getSnippetAttribute(){
         return explode("\n\n", $this->body)[0];
+    }
+
+    protected static function booted(){
+        static::deleting(function($post){
+            foreach ($post->images as $image){
+                Storage::delete($image->path);
+            }
+        });
     }
 }

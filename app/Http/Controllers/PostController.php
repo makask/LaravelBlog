@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Image;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
@@ -38,11 +39,20 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
+
         $post = new Post($request->validated());
         if($request->has('publish')){
             $post->published_at = Carbon::now();
         }
         $post->save();
+        foreach ($request->file('image') as $image){
+            $path = $image->store('public');
+            $image = new Image();
+            $image->path = $path;
+            $image->post()->associate($post);
+            $image->save();
+        }
+
         return response()->redirectToRoute('admin.posts.index');
     }
 
