@@ -41,8 +41,11 @@
                     <li>{{$follower->name}}</li>
                 @endforeach
             </ul>
-
     </div>
-</div>
 
+</div>
+<br>
+<div>
+    @include('userPosts')
+</div>
 @endsection

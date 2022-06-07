@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Image;
 use App\Models\Post;
+use App\Models\User;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use Carbon\Carbon;
@@ -20,7 +21,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Auth::user()->posts()->paginate();
-        return view('admin.posts.index', compact('posts'));
+        return view('admin.posts.index',compact('posts'));
     }
 
     /**

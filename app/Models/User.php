@@ -45,6 +45,11 @@ use Spatie\Sluggable\SlugOptions;
  * @property-read int|null $posts_count
  * @property-read \App\Models\Profile|null $profile
  * @method static \Illuminate\Database\Eloquent\Builder|User whereSlug($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|User[] $followers
+ * @property-read int|null $followers_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|User[] $follows
+ * @property-read int|null $follows_count
+ * @property-read mixed $am_following
  */
 class User extends Authenticatable
 {
